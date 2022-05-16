@@ -19,11 +19,15 @@ document.querySelector('.guess').value = 23;
 //  ⭐⭐⭐---------Starting Main Logic---------⭐⭐⭐
 
 
-const secretnumber = Math.trunc(Math.random() * 20) + 1;
-document.querySelector('.number').textContent = secretnumber;
 
 
+let secretnumber = Math.trunc(Math.random() * 20) + 1;
 let score = 20;
+let highscore = 0 ;
+
+
+//when player press check button
+
 document.querySelector('.check').addEventListener
 ('click', function() {
 
@@ -33,9 +37,21 @@ document.querySelector('.check').addEventListener
         document.querySelector('.message').textContent = '⛔ No Number inserted ❗❗❗';
     }
 
+
     else if (guessbox === secretnumber){
         document.querySelector('.message').textContent = 'Correct Number !!🎉🎉😃🎉🎉';
+        document.querySelector('body').style.backgroundColor = '#008000';
+        
+        document.querySelector('.number').style.width = '30rem';
+        document.querySelector('.number').textContent = secretnumber;
+
+          if(score > highscore){
+              highscore =score;
+              document.querySelector('.highscore').textContent = highscore;
+          }
+
     }
+
 
     else if (guessbox > secretnumber){
 
@@ -49,6 +65,7 @@ document.querySelector('.check').addEventListener
         document.querySelector('.score').textContent = 0;
        }     
     }
+
 
     else if (guessbox < secretnumber){
        
@@ -65,3 +82,47 @@ document.querySelector('.check').addEventListener
 
 
 });
+
+
+
+//---------Again Button Functionality-----------
+
+document.querySelector('.again').addEventListener
+('click', function (){
+
+
+    //simply refresh the page using this function
+     
+       //window.location.reload();
+
+    //or
+    
+    //Reset Secret Number
+    secretnumber = Math.trunc(Math.random() * 20) + 1;
+
+   //Reset Success message
+   document.querySelector('.message').textContent = 'Start guessing...';
+
+   //Reset score
+   score = 20;
+   document.querySelector('.score').textContent = score;
+
+   //Hide Secret number
+   document.querySelector('.number').textContent = '?';
+
+   //empty guessing value
+   document.querySelector('.guess').value= '';
+
+   //restore background
+   document.querySelector('body').style.backgroundColor = '#222';
+   document.querySelector('.number').style.width = '15rem';
+
+
+
+
+
+
+    }
+);
+
+
