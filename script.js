@@ -44,8 +44,10 @@ document.querySelector('.check').addEventListener
         
         document.querySelector('.number').style.width = '30rem';
         document.querySelector('.number').textContent = secretnumber;
-
+            
+        //High Score code
           if(score > highscore){
+
               highscore =score;
               document.querySelector('.highscore').textContent = highscore;
           }
@@ -53,34 +55,20 @@ document.querySelector('.check').addEventListener
     }
 
 
-    else if (guessbox > secretnumber){
+//------------------------Refactored Code / Short and Simplified code-----------
 
-       if(score>1 ){ 
-        document.querySelector('.message').textContent = 'Too High !! ✖️✖️✖️';
-        score--;
-        document.querySelector('.score').textContent = score;
-       }
-       else {
-        document.querySelector('.message').textContent = 'Game Over!!☠️☠️☠️';
-        document.querySelector('.score').textContent = 0;
-       }     
-    }
+    else if (guessbox !==secretnumber){
 
-
-    else if (guessbox < secretnumber){
-       
-        if(score>1){
-        document.querySelector('.message').textContent = 'Too Low !! ✖️✖️✖️';
-        score--;
-        document.querySelector('.score').textContent = score;
-        }
-        else {
+        if(score>1 ){ 
+            document.querySelector('.message').textContent = guessbox > secretnumber ? 'Too High !! ✖️✖️✖️' : 'Too Low !! ✖️✖️✖️'; ;
+            score--;
+            document.querySelector('.score').textContent = score;
+           }
+           else {
             document.querySelector('.message').textContent = 'Game Over!!☠️☠️☠️';
             document.querySelector('.score').textContent = 0;
            }     
     }
-
-
 });
 
 
@@ -90,15 +78,9 @@ document.querySelector('.check').addEventListener
 document.querySelector('.again').addEventListener
 ('click', function (){
 
-
-    //simply refresh the page using this function
-     
-       //window.location.reload();
-
-    //or
     
-    //Reset Secret Number
-    secretnumber = Math.trunc(Math.random() * 20) + 1;
+   //Reset Secret Number
+   secretnumber = Math.trunc(Math.random() * 20) + 1;
 
    //Reset Success message
    document.querySelector('.message').textContent = 'Start guessing...';
@@ -117,12 +99,48 @@ document.querySelector('.again').addEventListener
    document.querySelector('body').style.backgroundColor = '#222';
    document.querySelector('.number').style.width = '15rem';
 
+});
 
 
 
 
 
-    }
-);
+
+
+//---------------------  1st version of  conditons code / lenghty and repeitive------------
+
+
+
+//     else if (guessbox > secretnumber){
+
+//        if(score>1 ){ 
+//         document.querySelector('.message').textContent = 'Too High !! ✖️✖️✖️';
+//         score--;
+//         document.querySelector('.score').textContent = score;
+//        }
+//        else {
+//         document.querySelector('.message').textContent = 'Game Over!!☠️☠️☠️';
+//         document.querySelector('.score').textContent = 0;
+//        }     
+//     }
+
+
+//     else if (guessbox < secretnumber){
+       
+//         if(score>1){
+//         document.querySelector('.message').textContent = 'Too Low !! ✖️✖️✖️';
+//         score--;
+//         document.querySelector('.score').textContent = score;
+//         }
+//         else {
+//             document.querySelector('.message').textContent = 'Game Over!!☠️☠️☠️';
+//             document.querySelector('.score').textContent = 0;
+//            }     
+//     }
+
+
+// });
+
+
 
 
