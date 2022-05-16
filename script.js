@@ -25,6 +25,13 @@ let secretnumber = Math.trunc(Math.random() * 20) + 1;
 let score = 20;
 let highscore = 0 ;
 
+//display massage function
+
+const displaymessage = function(message){
+
+    document.querySelector('.message').textContent = message;
+}
+
 
 //when player press check button
 
@@ -34,14 +41,19 @@ document.querySelector('.check').addEventListener
     const guessbox = Number(document.querySelector('.guess').value);
 
     if (!guessbox){
-        document.querySelector('.message').textContent = '⛔ No Number inserted ❗❗❗';
+
+        displaymessage('⛔ No Number inserted ❗❗❗');
+       // document.querySelector('.message').textContent = '⛔ No Number inserted ❗❗❗';
     }
 
 
     else if (guessbox === secretnumber){
-        document.querySelector('.message').textContent = 'Correct Number !!🎉🎉😃🎉🎉';
-        document.querySelector('body').style.backgroundColor = '#008000';
-        
+
+        displaymessage('Correct Number !!🎉🎉😃🎉🎉');
+       //document.querySelector('.message').textContent = 'Correct Number !!🎉🎉😃🎉🎉';
+
+       
+        document.querySelector('body').style.backgroundColor = '#008000'; 
         document.querySelector('.number').style.width = '30rem';
         document.querySelector('.number').textContent = secretnumber;
             
@@ -65,12 +77,14 @@ document.querySelector('.check').addEventListener
             document.querySelector('.score').textContent = score;
            }
            else {
-            document.querySelector('.message').textContent = 'Game Over!!☠️☠️☠️';
+
+            displaymessage('Game Over!!☠️☠️☠️');
+            //document.querySelector('.message').textContent = 'Game Over!!☠️☠️☠️';
+
             document.querySelector('.score').textContent = 0;
            }     
     }
 });
-
 
 
 //---------Again Button Functionality-----------
@@ -83,7 +97,9 @@ document.querySelector('.again').addEventListener
    secretnumber = Math.trunc(Math.random() * 20) + 1;
 
    //Reset Success message
-   document.querySelector('.message').textContent = 'Start guessing...';
+
+   displaymessage('Start guessing...');
+  // document.querySelector('.message').textContent = 'Start guessing...';
 
    //Reset score
    score = 20;
